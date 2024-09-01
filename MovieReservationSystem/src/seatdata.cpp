@@ -11,7 +11,7 @@ QList<bool> SeatData::getSeatsStatus(QString movieTitle, QString theaterName)
     return Controller::instance()->getSeatsStatus(movieTitle, theaterName);
 }
 
-void SeatData::setSeat(QString movieTitle, QString theaterName, int seatNumber, bool occupied)
+void SeatData::syncSeats(QString movieTitle, QString theaterName, QList<bool> seats)
 {
-    Controller::instance()->setSeat(movieTitle, theaterName, seatNumber, occupied);
+    Controller::instance()->syncSeats(movieTitle, theaterName, seats);
 }

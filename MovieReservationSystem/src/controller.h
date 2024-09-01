@@ -19,7 +19,7 @@ public:
     MovieModel *getMovieModel() const;
     TheaterModel *getTheaterModel() const;
     QList<bool> getSeatsStatus(QString movieTitle, QString theaterName);
-    void setSeat(QString movieTitle, QString theaterName, int seatNumber, bool occupied);
+    void syncSeats(QString movieTitle, QString theaterName, QList<bool> seats);
 
 signals:
 

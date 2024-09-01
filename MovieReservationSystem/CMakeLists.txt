@@ -24,6 +24,7 @@ qt_add_qml_module(appMovieReservationSystem
         qml/view/MovieSelector.qml
         qml/view/TheaterSelector.qml
         qml/view/SeatSelector.qml
+        qml/view/SummaryPopup.qml
     RESOURCES
         assets.qrc
     SOURCES

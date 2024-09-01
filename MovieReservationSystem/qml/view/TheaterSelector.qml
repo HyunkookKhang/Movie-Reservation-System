@@ -3,7 +3,7 @@ import QtQuick.Controls
 
 import MovieReservationSystem
 
-Item {
+Pane {
     id: root
 
     visible: false

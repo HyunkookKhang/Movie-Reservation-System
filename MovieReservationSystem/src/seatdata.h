@@ -13,7 +13,7 @@ public:
     explicit SeatData(QObject *parent = nullptr);
 
     Q_INVOKABLE QList<bool> getSeatsStatus(QString movieTitle, QString theaterName);
-    Q_INVOKABLE void setSeat(QString movieTitle, QString theaterName, int seatNumber, bool occupied);
+    Q_INVOKABLE void syncSeats(QString movieTitle, QString theaterName, QList<bool> seats);
 
 signals:
 };

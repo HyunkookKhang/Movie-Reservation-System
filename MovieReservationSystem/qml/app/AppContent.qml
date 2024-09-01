@@ -67,5 +67,10 @@ Item {
 
     SeatSelector {
         id: seatSelector
+
+        onMovieReserved: {
+            stack.clear()
+            stack.push(movieSelector)
+        }
     }
 }

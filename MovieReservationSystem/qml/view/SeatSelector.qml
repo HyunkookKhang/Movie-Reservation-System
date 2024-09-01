@@ -3,7 +3,7 @@ import QtQuick.Controls
 
 import MovieReservationSystem
 
-Item {
+Pane {
     id: root
 
     property int num_total_seat: 20
@@ -11,6 +11,8 @@ Item {
     property string theaterName
 
     visible: false
+
+    signal movieReserved()
 
     Frame {
         anchors.fill: parent
@@ -73,9 +75,7 @@ Item {
 
                             onReleased: {
                                 parent.opacity = 1
-
                                 occupied = !occupied
-                                seatData.setSeat(movieTitle, theaterName, index, occupied)
                             }
                         }
                     }
@@ -91,7 +91,6 @@ Item {
             }
         }
 
-
         Button {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
@@ -101,15 +100,48 @@ Item {
             width: 150
             height: 50
 
-            visible: (stack.depth > 1) ? true : false
-
             text: "Reserve"
             font.bold: true
             font.pixelSize: 15
 
             onClicked: {
-                console.log("Reserve")
+                summaryPopup.movieTitle = root.movieTitle
+                summaryPopup.theaterName = root.theaterName
+
+                let reservedSeats = ""
+                for (let i = 0; i < seatModel.count; i++) {
+                    if (seatModel.get(i).occupied) {
+                        reservedSeats += getSeatNumber(i) + " "
+                    }
+                }
+                summaryPopup.reservedSeats = reservedSeats
+
+                summaryPopup.open()
             }
+        }
+    }
+
+    SummaryPopup {
+        id: summaryPopup
+
+        anchors.centerIn: parent
+
+        width: 450
+        height: 300
+
+        onMovieReserved: {
+            let seats = convertModelToList(seatModel)
+            seatData.syncSeats(movieTitle, theaterName, seats)
+            root.movieReserved()
+        }
+
+        function convertModelToList(model) {
+            let list = []
+            for (let i = 0; i < model.count; i++) {
+                let item = model.get(i)
+                list.push(item.occupied)  // Extract the "value" field
+            }
+            return list
         }
     }
 
