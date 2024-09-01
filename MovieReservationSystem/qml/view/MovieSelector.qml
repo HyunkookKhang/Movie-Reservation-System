@@ -12,6 +12,7 @@ Pane {
 
     Frame {
         anchors.fill: parent
+        clip: true
 
         ListView {
             width: parent.width
