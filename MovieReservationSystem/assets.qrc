@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/images/thumbnails/Alien.jpg</file>
+        <file>assets/images/thumbnails/Blink_Twice.jpg</file>
+        <file>assets/images/thumbnails/Deadpool.jpg</file>
+        <file>assets/images/thumbnails/It_ends_with_us.jpg</file>
+        <file>assets/images/thumbnails/The_Forge.jpg</file>
+        <file>assets/images/icons/seat_nor.png</file>
+        <file>assets/images/icons/seat_occ.png</file>
+    </qresource>
+</RCC>
