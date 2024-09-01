@@ -24,12 +24,12 @@ void Controller::init()
     m_movieModel->addMovie(Movie("The Forge", "qrc:/assets/images/thumbnails/The_Forge.jpg"));
 
     m_theaterModel = new TheaterModel;
-    m_theaterModel->addTheater(Theater("Movie Theater 1", "Theater 1 address"));
-    m_theaterModel->addTheater(Theater("Movie Theater 2", "Theater 2 address"));
-    m_theaterModel->addTheater(Theater("Movie Theater 3", "Theater 3 address"));
-    m_theaterModel->addTheater(Theater("Movie Theater 4", "Theater 4 address"));
-    m_theaterModel->addTheater(Theater("Movie Theater 5", "Theater 5 address"));
-    m_theaterModel->addTheater(Theater("Movie Theater 6", "Theater 6 address"));
+    m_theaterModel->addTheater(Theater("Crescent Moon Theater", "123 Starry Lane, New York, NY 10001"));
+    m_theaterModel->addTheater(Theater("Sunset Boulevard Playhouse", "456 Sunset Blvd, Los Angeles, CA 90028"));
+    m_theaterModel->addTheater(Theater("Riverbend Arts Center", "789 Riverside Dr, Chicago, IL 60611"));
+    m_theaterModel->addTheater(Theater("Blue Horizon Theater", "101 Ocean View Ave, Miami, FL 33139"));
+    m_theaterModel->addTheater(Theater("Golden Gate Stage", "234 Bay Street, San Francisco, CA 94133"));
+    m_theaterModel->addTheater(Theater("The Grand Auditorium", "567 Elm Street, Boston, MA 02108"));
 
     for (int i = 0; i < m_movieModel->rowCount(); i++) {
         QModelIndex movieIndex = m_movieModel->index(i, 0);
