@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 
 import MovieReservationSystem
 
@@ -9,58 +10,59 @@ Item {
 
     signal theaterSelected(theaterName: string)
 
-    ListView {
-        width: parent.width
-        height: 800
+    Frame {
+        anchors.fill: parent
 
-        model: theaterData.getTheaterModel()
+        ListView {
+            width: parent.width
+            height: 800
 
-        clip: true
+            model: theaterData.getTheaterModel()
 
-        delegate: Item {
-            width: root.width
-            height: 100
+            clip: true
 
-            Rectangle {
-                id: delegateBg
+            delegate: Item {
+                width: root.width
+                height: 100
 
-                anchors.fill: parent
-                color: "#ffffff"
-                border.width: 1
-                border.color: "black"
-                radius: 15
-            }
-
-            Column {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-
-                spacing: 5
-
-                Text {
-                    text: model.name
-                    font.pixelSize: 20
-                    font.bold: true
+                Rectangle {
+                    id: delegateBg
+                    anchors.fill: parent
+                    border.width: 1
+                    radius: 10
                 }
 
-                Text {
-                    text: model.address
-                    font.pixelSize: 16
-                    font.bold: true
+                Column {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
+
+                    spacing: 5
+
+                    Label {
+                        text: model.name
+                        font.pixelSize: 20
+                        font.bold: true
+                    }
+
+                    Label {
+                        text: model.address
+                        font.pixelSize: 16
+                        font.bold: true
+                    }
                 }
-            }
 
-            MouseArea {
-                anchors.fill: parent
+                MouseArea {
+                    anchors.fill: parent
 
-                onPressed: {
-                    delegateBg.opacity = 0.7
-                }
+                    onPressed: {
+                        delegateBg.opacity = 0.7
+                    }
 
-                onReleased: {
-                    delegateBg.opacity = 1
-                    root.theaterSelected(model.name)
+                    onReleased: {
+                        delegateBg.opacity = 1
+                        root.theaterSelected(model.name)
+                    }
                 }
             }
         }

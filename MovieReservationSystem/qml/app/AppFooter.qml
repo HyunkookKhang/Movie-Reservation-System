@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Rectangle {
+Pane {
     id: root
 
     implicitWidth: 1920
@@ -10,15 +10,12 @@ Rectangle {
 
     property string appTitle: "Movie Reservation System"
 
-    color: "#353638"
-
-    Text {
+    Label {
         id: ltTimer
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.rightMargin: 10
 
-        color: "#FFFFFF"
         font.pixelSize: 20
     }
 

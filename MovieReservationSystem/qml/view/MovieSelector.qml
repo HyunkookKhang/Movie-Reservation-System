@@ -1,4 +1,6 @@
 import QtQuick
+import QtQuick.Controls
+
 import MovieReservationSystem
 
 Item {
@@ -8,43 +10,46 @@ Item {
 
     signal movieSelected(movieTitle: string)
 
-    ListView {
-        width: parent.width
-        height: 800
+    Frame {
+        anchors.fill: parent
 
-        model: movieData.getMovieModel()
-        orientation: ListView.Horizontal
-
-        delegate: Item {
-            width: 400
+        ListView {
+            width: parent.width
             height: 800
 
-            Column {
-                spacing: 10
+            model: movieData.getMovieModel()
+            orientation: ListView.Horizontal
 
-                Image {
-                    source: model.thumbnailUri
+            delegate: Item {
+                width: 400
+                height: 800
 
-                    MouseArea {
-                        anchors.fill: parent
+                Column {
+                    spacing: 10
 
-                        onPressed: {
-                            parent.opacity = 0.7
-                        }
+                    Image {
+                        source: model.thumbnailUri
 
-                        onReleased: {
-                            parent.opacity = 1
-                            root.movieSelected(model.title)
+                        MouseArea {
+                            anchors.fill: parent
+
+                            onPressed: {
+                                parent.opacity = 0.7
+                            }
+
+                            onReleased: {
+                                parent.opacity = 1
+                                root.movieSelected(model.title)
+                            }
                         }
                     }
-                }
 
-                Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: model.title
-                    font.pixelSize: 20
-                    font.bold: true
-                    color: "#ffffff"
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        text: model.title
+                        font.pixelSize: 20
+                        font.bold: true
+                    }
                 }
             }
         }

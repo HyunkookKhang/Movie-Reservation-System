@@ -2,13 +2,11 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Rectangle {
+Pane {
     id: root
 
     implicitWidth: 1920
     implicitHeight: 100
-
-    color: "#353638"
 
     property string appTitle: "Movie Reservation System"
 
@@ -23,9 +21,8 @@ Rectangle {
 
         spacing: 5
 
-        Text {
+        Label {
             text: root.appTitle
-            color: "#FFFFFF"
             font.pixelSize: 36
             font.bold: true
         }
@@ -33,31 +30,21 @@ Rectangle {
         Row {
             spacing: 20
 
-            Text {
+            Label {
                 id: currentPageText
 
                 width: 250
 
-                color: "#a9a9a9"
                 font.pixelSize: 28
                 font.bold: true
             }
 
-            Text {
+            Label {
                 id: reservationSummaryText
 
-                color: "#a9a9a9"
                 font.pixelSize: 28
             }
         }
-    }
-
-    Rectangle {
-        anchors.bottom: parent.bottom
-
-        width: parent.width
-        height: 1
-        color: "#ffffff"
     }
 
     onStackIndexChanged: {

@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 
 import MovieReservationSystem
 
@@ -11,79 +12,103 @@ Item {
 
     visible: false
 
-    Rectangle {
-        id: screen
+    Frame {
+        anchors.fill: parent
 
-        anchors.top: parent.top
-        anchors.topMargin: 20
-        anchors.horizontalCenter: parent.horizontalCenter
+        Rectangle {
+            id: screen
 
-        border.width: 2
-        border.color: "#dc143c"
+            anchors.top: parent.top
+            anchors.topMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
 
-        width: 800
-        height: 200
+            border.width: 2
+            border.color: "#dc143c"
 
-        Text {
-            anchors.centerIn: parent
-            text: "SCREEN"
-            font.pixelSize: 40
-            font.letterSpacing: 10
+            width: 800
+            height: 200
+
+            Label {
+                anchors.centerIn: parent
+                text: "SCREEN"
+                font.pixelSize: 40
+                font.letterSpacing: 10
+            }
         }
-    }
 
-    GridView {
-        anchors.horizontalCenter: parent.horizontalCenter
+        GridView {
+            anchors.horizontalCenter: parent.horizontalCenter
 
-        anchors.top: screen.bottom
-        anchors.topMargin: 50
+            anchors.top: screen.bottom
+            anchors.topMargin: 50
 
-        width: 800
-        height: 300
+            width: 800
+            height: 300
 
-        cellWidth: 160
-        cellHeight: 100
+            cellWidth: 160
+            cellHeight: 100
 
-        model: seatModel
+            model: seatModel
 
-        delegate: Item {
-            width: 130
-            height: 150
+            delegate: Item {
+                width: 130
+                height: 150
 
-            Column {
-                anchors.fill: parent
+                Column {
+                    anchors.fill: parent
 
-                spacing: 5
+                    spacing: 5
 
-                Image {
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    Image {
+                        anchors.horizontalCenter: parent.horizontalCenter
 
-                    source: occupied ? "qrc:/assets/images/icons/seat_occ.png" : "qrc:/assets/images/icons/seat_nor.png"
+                        source: occupied ? "qrc:/assets/images/icons/seat_occ.png" : "qrc:/assets/images/icons/seat_nor.png"
 
-                    MouseArea {
-                        anchors.fill: parent
+                        MouseArea {
+                            anchors.fill: parent
 
-                        onPressed: {
-                            parent.opacity = 0.7
-                        }
+                            onPressed: {
+                                parent.opacity = 0.7
+                            }
 
-                        onReleased: {
-                            parent.opacity = 1
+                            onReleased: {
+                                parent.opacity = 1
 
-                            occupied = !occupied
-                            seatData.setSeat(movieTitle, theaterName, index, occupied)
+                                occupied = !occupied
+                                seatData.setSeat(movieTitle, theaterName, index, occupied)
+                            }
                         }
                     }
-                }
 
-                Text {
-                    anchors.horizontalCenter: parent.horizontalCenter
+                    Label {
+                        anchors.horizontalCenter: parent.horizontalCenter
 
-                    text: getSeatNumber(index)
-                    font.pixelSize: 20
-                    font.bold: true
-                    color: "#ffffff"
+                        text: getSeatNumber(index)
+                        font.pixelSize: 20
+                        font.bold: true
+                    }
                 }
+            }
+        }
+
+
+        Button {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+
+            width: 150
+            height: 50
+
+            visible: (stack.depth > 1) ? true : false
+
+            text: "Reserve"
+            font.bold: true
+            font.pixelSize: 15
+
+            onClicked: {
+                console.log("Reserve")
             }
         }
     }

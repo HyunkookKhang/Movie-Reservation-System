@@ -12,9 +12,8 @@ Item {
     property string selectedTheaterName
     property int currentPageDepth: stack.depth
 
-    Rectangle {
+    Pane {
         anchors.fill: parent
-        color: "#353638"
     }
 
     StackView {
@@ -30,11 +29,14 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: 10
 
+        width: 100
+        height: 50
+
         visible: (stack.depth > 1) ? true : false
 
-        text: "<"
+        text: "< Back"
         font.bold: true
-        font.pixelSize: 20
+        font.pixelSize: 15
 
         onClicked: {
             stack.pop()
