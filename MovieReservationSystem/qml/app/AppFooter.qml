@@ -8,8 +8,6 @@ Pane {
     implicitWidth: 1920
     implicitHeight: 100
 
-    property string appTitle: "Movie Reservation System"
-
     Label {
         id: ltTimer
         anchors.verticalCenter: parent.verticalCenter
