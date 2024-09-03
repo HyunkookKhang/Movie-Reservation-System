@@ -193,8 +193,6 @@ Pane {
     onVisibleChanged: {
         if (visible) {
             let seats = seatData.getSeatsStatus(movieTitle, theaterName)
-            console.log(seats.length)
-
             for (let i = 0; i < seats.length; i++) {
                 seatModel.get(i).occupied = seats[i]
             }
