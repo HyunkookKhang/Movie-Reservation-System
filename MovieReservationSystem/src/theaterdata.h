@@ -6,6 +6,13 @@
 
 #include "theatermodel.h"
 
+
+/**
+ * @class TheaterData
+ * @brief Manages and provides access to the TheaterModel.
+ *
+ * This class acts as a bridge between C++ and QML, exposing the TheaterModel to QML code.
+ */
 class TheaterData : public QObject
 {
     Q_OBJECT

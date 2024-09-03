@@ -4,6 +4,14 @@
 #include <QObject>
 #include <QQmlEngine>
 
+
+/**
+ * @class SeatData
+ * @brief Manages seat status and synchronization for movies and theaters.
+ *
+ * This class provides methods to retrieve and update the status of seats for a given movie
+ * and theater. It is designed to be used in conjunction with QML to interact with seat data.
+ */
 class SeatData : public QObject
 {
     Q_OBJECT

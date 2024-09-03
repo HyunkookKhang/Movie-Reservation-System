@@ -6,6 +6,13 @@
 
 #include "moviemodel.h"
 
+
+/**
+ * @class MovieData
+ * @brief Manages and provides access to the MovieModel.
+ *
+ * This class acts as a bridge between C++ and QML, exposing the MovieModel to QML code.
+ */
 class MovieData : public QObject
 {
     Q_OBJECT

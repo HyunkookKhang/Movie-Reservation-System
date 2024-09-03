@@ -4,6 +4,13 @@
 #include <QAbstractListModel>
 #include <QStringList>
 
+
+/**
+ * @class Movie
+ * @brief Represents a movie with a title and a thumbnail URI.
+ *
+ * This class stores information about a movie, including its title and thumbnail URI.
+ */
 class Movie
 {
 public:
@@ -17,6 +24,14 @@ private:
     QString m_thumbnailUri;
 };
 
+
+/**
+ * @class MovieModel
+ * @brief A model for managing a list of movies.
+ *
+ * This class provides a model for use with views in Qt, allowing the display and interaction
+ * with a list of movies. It extends QAbstractListModel to integrate with Qt's model/view architecture.
+ */
 class MovieModel : public QAbstractListModel
 {
     Q_OBJECT
