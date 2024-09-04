@@ -145,7 +145,7 @@ Pane {
         }
     }
 
-    function getSeatNumber(index: int) {
+    function getSeatNumber(index: int): string {
         let numberOfSeatsEachLine = 5
 
         let lineCount = Math.floor((index) / numberOfSeatsEachLine) + 1
