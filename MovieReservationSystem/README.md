@@ -2,7 +2,7 @@
 
 ## Overview
 
-- Target Platform: Windows
+- Target Platform: Windows 11, Ubuntu 20.04, MacOSX Sonoma
 - Qt: Qt for Python 6.5.x, QML
 - QtCreator: QtCreator 13.x.x
 
