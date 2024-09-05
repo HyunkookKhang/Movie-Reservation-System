@@ -1,8 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-import "../view"
-// import MovieReservationSystem
+import MovieReservationSystem
 
 Item {
     id: root
