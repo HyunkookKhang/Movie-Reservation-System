@@ -18,7 +18,7 @@ Item {
     StackView {
         id: stack
 
-        initialItem: movieSelector
+        initialItem: movieSelectorComp
         anchors.fill: parent
     }
 
@@ -42,34 +42,47 @@ Item {
         }
     }
 
-    MovieSelector {
-        id: movieSelector
+    Component {
+        id: movieSelectorComp
 
-        onMovieSelected: (movieTitle) => {
-            selectedMovieTitle = movieTitle
+        MovieSelector {
+            id: movieSelector
 
-            stack.push(theaterSelector)
+            onMovieSelected: (movieTitle) => {
+                selectedMovieTitle = movieTitle
+
+                stack.push(theaterSelectorComp)
+            }
         }
     }
 
-    TheaterSelector {
-        id: theaterSelector
+    Component {
+        id: theaterSelectorComp
 
-        onTheaterSelected: (theaterName) => {
-            selectedTheaterName = theaterName
+        TheaterSelector {
+            id: theaterSelector
 
-            seatSelector.movieTitle = selectedMovieTitle
-            seatSelector.theaterName = selectedTheaterName
-            stack.push(seatSelector)
+            onTheaterSelected: (theaterName) => {
+                selectedTheaterName = theaterName
+
+                stack.push(seatSelectorComp)
+            }
         }
     }
 
-    SeatSelector {
-        id: seatSelector
+    Component {
+        id: seatSelectorComp
 
-        onMovieReserved: {
-            stack.clear()
-            stack.push(movieSelector)
+        SeatSelector {
+            id: seatSelector
+
+            movieTitle: root.selectedMovieTitle
+            theaterName: root.selectedTheaterName
+
+            onMovieReserved: {
+                stack.clear()
+                stack.push(movieSelectorComp)
+            }
         }
     }
 }

@@ -10,8 +10,6 @@ Pane {
     property string movieTitle
     property string theaterName
 
-    visible: false
-
     signal movieReserved()
 
     Frame {
@@ -177,10 +175,12 @@ Pane {
         id: seatModel
 
         Component.onCompleted: {
+            let seats = seatData.getSeatsStatus(movieTitle, theaterName)
+
             for (let i = 0; i < root.num_total_seat; i++) {
                 append({
                            number: i,
-                           occupied: false
+                           occupied: seats[i]
                        })
             }
         }
@@ -188,14 +188,5 @@ Pane {
 
     SeatData {
         id: seatData
-    }
-
-    onVisibleChanged: {
-        if (visible) {
-            let seats = seatData.getSeatsStatus(movieTitle, theaterName)
-            for (let i = 0; i < seats.length; i++) {
-                seatModel.get(i).occupied = seats[i]
-            }
-        }
     }
 }

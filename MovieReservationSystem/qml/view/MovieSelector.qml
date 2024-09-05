@@ -6,8 +6,6 @@ import MovieReservationSystem
 Pane {
     id: root
 
-    visible: false
-
     signal movieSelected(movieTitle: string)
 
     Frame {
